@@ -1,10 +1,34 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { fetchPokemon } from '../store/allPokemon'
+import 'firebase/database'
+import database from '../../utils/firebase'
 
-const Homepage = (props) => (
-    <div className="main">
-        Hello World!!!!!
-    </div>
-)
+class Homepage extends React.Component
+{
+    componentDidMount()
+    {
+        this.props.getPokemon()
+        // const pokeRef = database.ref("Pokemon");
+        // pokeRef.on('value', (snapshot) =>
+        // {
+        //     console.log(snapshot.val())
+        // })
+    }
 
-export default Homepage
+    render()
+    {
+        return (
+            <div className='main'>
+                hello world!
+            </div>
+        )
+    }
+}
+
+const mapDispatch = (dispatch) => (
+{
+    getPokemon: () => dispatch(fetchPokemon())
+})
+
+export default connect(null, mapDispatch)(Homepage)
