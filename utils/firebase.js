@@ -1,5 +1,6 @@
-import firebase from 'firebase/app'
-import 'firebase/database'
+import axios from 'axios';
+import firebase from 'firebase/app';
+import 'firebase/database';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBGSq_0akqGbNZrq0pmK3AcW0NjR9obJsk",
@@ -15,4 +16,7 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 // const analytics = firebase.getAnalytics(app);
 
-export default firebase.database()
+const database = firebase.database();
+
+
+export default database
