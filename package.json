@@ -9,8 +9,7 @@
     "build-dev": "npm run build -- --watch --mode=development",
     "test": "node server",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
-    "start-dev": "npm run build-dev & npm run start-server",
-    "seed": "node utils/seed.js"
+    "start-dev": "npm run build-dev & npm run start-server"
   },
   "repository":
   {

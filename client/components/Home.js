@@ -1,9 +1,6 @@
 import React from 'react';
 import database from '../../utils/firebase'
-import getPokemon from '../../utils/seed';
-import PokeForm from './PokeForm'
-// import 'firebase/database';
-// import database from '../../utils/firebase';
+import TodoForm from './TodoForm'
 
 class Homepage extends React.Component
 {
@@ -11,65 +8,53 @@ class Homepage extends React.Component
     {
         super()
         this.state = {
-            allPokemon: []
+            todos: []
         }
-        this.handleClick = this.handleClick.bind(this)
+        this.handleUpdate = this.handleUpdate.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
     }
 
     componentDidMount()
     {
-        const pokeRef = database.ref("Pokemon");
+        const pokeRef = database.ref("Todos");
         pokeRef.on('value', (snapshot) =>
         {
-            const pokemon = snapshot.val();
+            const todos = snapshot.val();
+            console.log(todos)
             let newArr = [];
-            for (let key in pokemon)
+            for (let key in todos)
             {
-                newArr.push({ ...pokemon[key], id: key })
+                newArr.push({ ...todos[key], id: key })
             }
-            this.setState({ allPokemon: newArr })
+            this.setState({ todos: newArr })
         })
     }
 
-    handleClick(evt)
+    handleUpdate(todo)
     {
-        evt.preventDefault()
-        getPokemon(this.state.allPokemon.length === 0)
+        const todoRef = database.ref('Todos').child(todo.id)
+        todoRef.update({ isComplete: !todo.isComplete })
     }
 
-    handleDelete(evt, id)
+    handleDelete(id)
     {
-        evt.preventDefault()
-        const pokeRef = database.ref('Pokemon').child(id)
-        pokeRef.remove();
+        const todoRef = database.ref('Todos').child(id)
+        todoRef.remove()
     }
 
     render()
     {
-        const { allPokemon } = this.state
-        console.log(this.state.allPokemon);
+        const { todos } = this.state
         return (
             <div className='main'>
-                <button onClick={this.handleClick}>add a pokemon</button>
-                <PokeForm />
-                <div id="allPokemon">
-                    {
-                        allPokemon.map(elem =>
-                        {
-                            return (
-                                <div key={elem.id} className="pokemon">
-                                    <div>{elem.name}</div>
-                                    <img className="pokeImage" src={elem.image} />
-                                    <div>HP: {elem.hp}</div>
-                                    <div>ATTACK: {elem.attack}</div>
-                                    <div>DEFENSE: {elem.defense}</div>
-                                    <button className="deleteButton" onClick={(evt) => this.handleDelete(evt, elem.id)}>X</button>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
+                <TodoForm />
+                {todos.map(todo => 
+                    <div key={todo.id} className="todos">
+                        <h1 className={todo.isComplete ? "completed" : ""}>{todo.name}</h1>
+                        <button onClick={() => this.handleDelete(todo.id)}>Delete</button>
+                        <button onClick={() => this.handleUpdate(todo)}>Complete</button>
+                    </div>
+                )}
             </div>
         );
     }
