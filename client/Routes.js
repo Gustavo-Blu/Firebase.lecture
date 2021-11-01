@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from 'react'
-import { connect } from 'react-redux'
-import { withRouter, Route, Switch, Redirect } from 'react-router-dom'
+import React, { Component } from 'react'
+import { BrowserRouter, withRouter, Route, Switch, Redirect } from 'react-router-dom'
 import Homepage from './components/Home'
 
 class Routes extends Component
@@ -13,12 +12,12 @@ class Routes extends Component
     render()
     {
         return (
-            <div>
+            <BrowserRouter>
                 <Switch>
                     <Route path="/home" component={Homepage} />
                     <Redirect to="/home" />
                 </Switch>
-            </div>
+            </BrowserRouter>
         )
     }
 }

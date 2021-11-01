@@ -6,29 +6,22 @@ html {
     width: 100vw;
 }
 
-#navbar {
-    background-color: lightblue;
-    margin: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 50px;
-    text-align: center;
-    overflow: hidden;
-}
-
 .main {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 80px;
+    margin-bottom: 180px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-#footer {
-    background-color: lightblue;
-    margin: 0;
-    position: fixed;
-    bottom: 0;
-    height: 50px;
-    width: 100%;
+.todos {
     text-align: center;
-    overflow: hidden;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: lightGreen;
+    transition: 1s ease;
 }
