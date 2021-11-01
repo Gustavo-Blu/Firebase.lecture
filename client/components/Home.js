@@ -16,8 +16,8 @@ class Homepage extends React.Component
 
     componentDidMount()
     {
-        const pokeRef = database.ref("Todos");
-        pokeRef.on('value', (snapshot) =>
+        const todoRef = database.ref("Todos");
+        todoRef.on('value', (snapshot) =>
         {
             const todos = snapshot.val();
             console.log(todos)

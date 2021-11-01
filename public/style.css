@@ -40,10 +40,11 @@ html {
     transition: 1s ease;
 }
 
-button {
-    display: inline-block;
-    margin: 10px;
-}
+/*button {
+    */
+    /*    display: inline-block;*/
+    /*    margin: 10px;*/
+    /*}*/
 
 label {
     margin: 10px;
