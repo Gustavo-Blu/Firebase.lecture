@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { BrowserRouter, withRouter, Route, Switch, Redirect } from 'react-router-dom'
 import Homepage from './components/Home'
+import Users from './components/Users'
 
 class Routes extends Component
 {
@@ -15,6 +16,7 @@ class Routes extends Component
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/home" component={Homepage} />
+                    <Route exact Path="/users" component={Users} />
                     <Redirect to="/home" />
                 </Switch>
             </BrowserRouter>

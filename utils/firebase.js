@@ -1,6 +1,7 @@
-import axios from 'axios';
-import firebase from 'firebase/app';
-import 'firebase/database';
+import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database"
+import { getFirestore } from "@firebase/firestore"
+import { getAnalytics } from "firebase/analytics"
 
 const firebaseConfig = {
     apiKey: "AIzaSyBGSq_0akqGbNZrq0pmK3AcW0NjR9obJsk",
@@ -13,10 +14,11 @@ const firebaseConfig = {
     measurementId: "G-L07H383M3W"
 };
 
-const app = firebase.initializeApp(firebaseConfig);
-// const analytics = firebase.getAnalytics(app);
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
-const database = firebase.database();
+export const firestore = getFirestore(app)
+export default getDatabase()
 
 
-export default database
+// export default database

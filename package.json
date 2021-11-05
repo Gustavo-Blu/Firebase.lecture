@@ -3,33 +3,28 @@
   "version": "1.0.0",
   "description": "example code to teach the basics of firebase realtime database",
   "main": "index.js",
-  "scripts":
-  {
+  "scripts": {
     "build": "webpack",
     "build-dev": "npm run build -- --watch --mode=development",
     "test": "node server",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
     "start-dev": "npm run build-dev & npm run start-server"
   },
-  "repository":
-  {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/Gustavo-Blu/Firebase.lecture.git"
   },
   "keywords": [],
   "author": "Gustavo Allen",
   "license": "ISC",
-  "bugs":
-  {
+  "bugs": {
     "url": "https://github.com/Gustavo-Blu/Firebase.lecture/issues"
   },
   "homepage": "https://github.com/Gustavo-Blu/Firebase.lecture#readme",
-  "dependencies":
-  {
+  "dependencies": {
     "axios": "^0.24.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "firebase": "^8.10.0",
     "history": "^5.0.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.14",
@@ -42,11 +37,11 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.0"
   },
-  "devDependencies":
-  {
+  "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
     "babel-loader": "^8.2.3",
+    "firebase": "^9.3.0",
     "redux-devtools-extension": "^2.13.9",
     "webpack": "^5.61.0",
     "webpack-cli": "^4.9.1"

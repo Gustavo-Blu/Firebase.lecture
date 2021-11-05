@@ -1,5 +1,6 @@
 import React from 'react';
 import database from '../../utils/firebase'
+import { ref, onValue, update, remove } from 'firebase/database'
 import TodoForm from './TodoForm'
 
 class Homepage extends React.Component
@@ -16,9 +17,10 @@ class Homepage extends React.Component
 
     componentDidMount()
     {
-        const todoRef = database.ref("Todos");
-        todoRef.on('value', (snapshot) =>
+        const todoRef = ref(database, 'Todos/');
+        onValue(todoRef, (snapshot) =>
         {
+
             const todos = snapshot.val();
             console.log(todos)
             let newArr = [];
@@ -32,19 +34,20 @@ class Homepage extends React.Component
 
     handleUpdate(todo)
     {
-        const todoRef = database.ref('Todos').child(todo.id)
-        todoRef.update({ isComplete: !todo.isComplete })
+        const todoRef = ref(database, 'Todos/' + todo.id)
+        update(todoRef, { isComplete: !todo.isComplete })
     }
 
     handleDelete(id)
     {
-        const todoRef = database.ref('Todos').child(id)
-        todoRef.remove()
+        const todoRef = ref(database, 'Todos/' + id)
+        remove(todoRef)
     }
 
     render()
     {
         const { todos } = this.state
+        console.log(todos)
         return (
             <div className='main'>
                 <TodoForm />

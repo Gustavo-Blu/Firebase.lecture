@@ -1,5 +1,7 @@
 import React from 'react'
 import database from '../../utils/firebase'
+import { ref, push } from 'firebase/database'
+
 
 class TodoForm extends React.Component
 {
@@ -21,8 +23,8 @@ class TodoForm extends React.Component
     handleSubmit(evt)
     {
         evt.preventDefault();
-        const todoRef = database.ref('Todos')
-        todoRef.push({ ...this.state, isComplete: false })
+        const todoRef = ref(database, 'Todos/');
+        push(todoRef, { ...this.state, isComplete: false })
 
         this.setState({ name: '' })
     }
@@ -35,7 +37,7 @@ class TodoForm extends React.Component
                 <label htmlFor="name">Name</label>
                 <input type="string" name="name" value={this.state.name} onChange={this.handleChange} />
                 
-                <button type="submit">add pokemon</button>
+                <button type="submit">add todo</button>
             </form>
         )
     }
