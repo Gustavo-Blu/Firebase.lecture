@@ -1,9 +1,16 @@
 import React from 'react'
 
-const Homepage = (props) => (
-    <div className="main">
-        Hello World!!!!!
-    </div>
-)
+class Homepage extends React.Component
+{
+    render()
+    {
+        return (
+            <div className="main">
+                Hello World!!!!!
+            </div>
+
+        )
+    }
+}
 
 export default Homepage
