@@ -4,11 +4,6 @@ import Homepage from './components/Home'
 
 class Routes extends Component
 {
-    componentDidMount()
-    {
-
-    }
-
     render()
     {
         return (
